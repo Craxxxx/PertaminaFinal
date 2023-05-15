@@ -13,39 +13,41 @@ Library OpenCV
 Library Pandas
 bisa diinstall dengan menjalankan pip install -r requirements.txt (pastikan python sudah terinstall terlebih dahulu)
 
-Yang terInstall di Device Developer:
+Yang terinstall di Device Developer:
 
-Package                Version
----------------------- --------
-alembic                1.9.2
-bcrypt                 4.0.1
-click                  8.1.3
-colorama               0.4.6
-Flask                  2.2.2
-Flask-Login            0.6.2
-Flask-Migrate          4.0.2
-Flask-MySQLdb          1.0.1
-Flask-SQLAlchemy       3.0.2
-greenlet               2.0.1
-itsdangerous           2.1.2
-Jinja2                 3.1.2
-Mako                   1.2.4
-MarkupSafe             2.1.2
-mysql-connector-python 8.0.32
-mysqlclient            2.1.1
-numpy                  1.24.1
-opencv-python          4.7.0.68
-pandas                 1.5.3
-pip                    22.3.1
-protobuf               3.20.3
-python-dateutil        2.8.2
-pytz                   2022.7.1
-setuptools             65.5.0
-six                    1.16.0
-SQLAlchemy             1.4.46
-SQLAlchemy-Utils       0.39.0
-var-dump               1.2
-Werkzeug               2.2.2
+Package Version
+1. alembic                1.9.2
+2. bcrypt                 4.0.1
+3. click                  8.1.3
+4. colorama               0.4.6
+5. Flask                  2.2.2
+6. Flask-Login            0.6.2
+7. Flask-Migrate          4.0.2
+8. Flask-MySQLdb          1.0.1
+9. Flask-SQLAlchemy       3.0.2
+10. greenlet               2.0.1
+11. itsdangerous           2.1.2
+12. Jinja2                 3.1.2
+13. Mako                   1.2.4
+14. MarkupSafe             2.1.2
+15. mysql-connector-python 8.0.32
+16. mysqlclient            2.1.1
+17. numpy                  1.24.1
+18. opencv-python          4.7.0.68
+19. pandas                 1.5.3
+20. pip                    22.3.1
+21. protobuf               3.20.3
+22. python-dateutil        2.8.2
+23. pytz                   2022.7.1
+24. setuptools             65.5.0
+25. six                    1.16.0
+26. SQLAlchemy             1.4.46
+27. SQLAlchemy-Utils       0.39.0
+28. var-dump               1.2
+29. Werkzeug               2.2.2
+
+
+
 
 Apabila file tidak bisa di run sesuaikan package python dengan yang terinstall di device developer
 
