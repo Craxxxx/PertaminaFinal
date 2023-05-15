@@ -1,0 +1,118 @@
+{% extends "base.html" %}  
+{% block main %} 
+
+<div class="container-fluid">
+    <div class="row">
+      <!-- cctv column -->
+      <div class="col-9 g-0">
+        <div class="row row-cols-4 g-0">
+          <div class='col-lg-6'>
+            <img src="{{ url_for('playvid.video_feed1') }}" height="315 " width="569.7" class="w-100"
+              controls id="cam1" onclick="openFullscreen1();">
+            </div>
+          <div class='col-lg-6'>
+            <img src="{{ url_for('playvid.video_feed2') }}" height="315" width="569.7" class="w-100"
+              controls id="cam2" onclick="openFullscreen2();">
+            </div>
+          <div class='col-lg-6'>
+            <img src="{{ url_for('playvid.video_feed3') }}" height="315" width="569.7" class="w-100"
+              controls id="cam3" onclick="openFullscreen3();">
+            </div>
+          <div class='col-lg-6'>
+            <img src="{{ url_for('playvid.video_feed4') }}" height="315" width="569.7" class="w-100"
+              controls id="cam4" onclick="openFullscreen4();">
+            </div>
+        </div>
+        <div class="row lineseparator"><hr class="hr"/></div>
+        <div class="row CameraOption">
+          <!-- Camera Buttons -->
+          <div class="d-flex flex-row justify-content-end mb-1">
+            <div class="ms-0"><button type="button" class="btn btn-sm" active onclick="location.href='/2x2'"><img src="/static/4_white.png" alt="" class="img-logo"></button></div>
+            <div class="ms-0"><button type="button" class="btn btn-sm" onclick="location.href='/3x3'"><img src="/static/9_black.png" alt="" class="img-logo"></button></div>
+            <div class="ms-0"><button type="button" class="btn btn-sm" onclick="location.href='/'"><img src="/static/16_black.png" alt="" class="img-logo"></button></div>
+          </div>
+          <!-- Camera Buttons -->
+        </div>
+      </div>
+      <!-- cctv column -->
+      <!-- sidebar column -->
+      <div class="col-3 g-0 sidebar ps-3 pt-3">
+        <nav id="sidebarMenu" class="d-md-block sidebar collapse navbar-light">
+          <div class="position-sticky">
+              <!-- sidebar title -->
+
+              <!-- sidebar items -->
+                <form action="" method="POST">
+                  {% for cctv in jinja %}
+                    <div class="row row-cols-3 g-0 mb-2 side">
+                      <div class="col-12 align-self-center">
+                        <div class="btn-group justify-content-center">
+                          <select class="dropbtn3" name="wincam{{loop.index}}">
+                            <div class="dropdown-content">
+                              <option value="C:\Users\Raditya\Desktop\UNSRI\Pertamina\PertaminaProjects\PertaminaFinal\website\static\no-signal.mp4" selected hidden>CAM</option>
+                              {% for cctv in user_cctv %}
+                                <option value="{{cctv.link_cctv}}">{{cctv.name_cctv}}</option>
+                              {% endfor %}
+                            </div>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}  
+                  <input type="submit" value="Refresh" class="btn btn-primary btn-sm mt-3 submitbutton">
+                  <input type="reset" value="Reset" class="btn btn-primary btn-sm mt-3 submitbutton">  
+              </form>
+              <!-- sidebar items -->
+          </div>
+        </nav>
+      </div>
+      <!-- sidebar column -->
+    </div>
+    <!-- separator -->
+</div>
+
+
+<script type="text/javascript">
+  var elem1 = document.getElementById("cam1");
+  function openFullscreen1() {
+    if (elem1.requestFullscreen) {
+      elem1.requestFullscreen();
+    } else if (elem1.msRequestFullscreen) { /* IE11 */
+      elem1.msRequestFullscreen();
+    }
+  }
+  var elem2 = document.getElementById("cam2");
+  function openFullscreen2() {
+    if (elem2.requestFullscreen) {
+      elem2.requestFullscreen();
+    } else if (elem2.msRequestFullscreen) { /* IE11 */
+      elem2.msRequestFullscreen();
+    }
+  }
+  var elem3 = document.getElementById("cam3");
+  function openFullscreen3() {
+    if (elem3.requestFullscreen) {
+      elem3.requestFullscreen();
+    } else if (elem3.msRequestFullscreen) { /* IE11 */
+      elem3.msRequestFullscreen();
+    }
+  }
+  var elem4 = document.getElementById("cam4");
+  function openFullscreen4() {
+    if (elem4.requestFullscreen) {
+      elem4.requestFullscreen();
+    } else if (elem4.msRequestFullscreen) { /* IE11 */
+      elem4.msRequestFullscreen();
+    }
+  }
+  var elem5 = document.getElementById("ALLCAM");
+  function openFullLayout() {
+    if (elem5.requestFullscreen) {
+      elem5.requestFullscreen();
+    } else if (elem5.msRequestFullscreen) { /* IE11 */
+      elem5.msRequestFullscreen();
+    }
+  }
+</script>
+
+{% endblock %}

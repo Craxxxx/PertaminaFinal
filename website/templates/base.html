@@ -1,0 +1,207 @@
+<!-- THIS IS THE BASE TEMPLATE FOR REWRITING THE BODY TAGS -->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <!-- Templating Jinja -->
+  <!-- Block will overwrite anything -->
+  <!-- this will be overwritten by the home.html -->
+ 
+
+  <!-- Bootstrap core CSS -->
+
+  <!-- bootstrap cdn -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- bootstrap cdn -->
+  
+  <!-- icons cdn -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  
+  <!-- icons cdn -->
+
+  <!-- Custom styles for this template -->
+  <link href="/static/dashboard-rework.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar navbar-dark sticky-top p-0 shadow ">
+    
+        <!-- cctv brand -->
+        <div class="container1">
+            {% if user.permission == "Admin" %}
+                <a class="navbar-brand ps-5" href="#"><img src="/static/logo.jpg" alt="" class="img-logo"></a>
+                <span class="badge rounded-pill bg-success">
+                    
+                    <p class="d-inline roles">Admin</p>
+            </span>
+            {% elif user.permission == "User" %}
+                <a class="navbar-brand ps-5" href="#"><img src="/static/logo.jpg" alt="" class="img-logo"></a>
+                <span class="badge rounded-pill bg-primary">
+                    
+                    <p class="d-inline roles">User</p>
+            </span>
+            {% endif %}
+        </div>
+        <!-- cctv brand -->
+    
+        <!-- user data -->
+        <div class="col-3 g-0 userContainer">
+            <div class="d-flex flex-row align-items-center p-3 rounded-top userdataContainer ">
+                <!-- User photo -->
+                <div class="container1 g-0 photoUser ms-2">
+                    <div class="pictureFrame">
+                        <img src="/static/user.jpeg" alt="" class="userPhoto">
+                    </div>
+                </div>
+                <!-- User Photo -->
+    
+                <!-- User details -->
+                <div class="container1 g-0 me-1">
+                    <div class="d-flex flex-column">
+                        <div class="username g-2">
+                            <p class="m-2 username">Welcome,&nbsp;{{ user.username }} </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- User Details -->
+    
+                <!-- User Roles -->
+                <div class="container-fluid">
+                    <button class="navbar-toggler float-end" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end sideHide" tabindex="-1" id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-body">
+                            {% if user.permission == "Admin"%}
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                <div class="offcanvas-body">
+                            
+                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 sidebar-nav" id="sidebar-nav">
+                                        <li class="nav-heading">
+                                            <!-- SIDEBAR USERPIC -->
+                                            <div class="profile-userpic">
+                                                <img src="/static/user.jpeg" class="img-responsive" alt="">
+                                            </div>
+                                            <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                <div class="userrole">{{ user.username }}</div>
+                            </div>
+                            <div class="profile-usertitle-job">
+                                <p class="m-0 usersname"><small>{{ user.email }}</small></p>
+                            </div>
+                        </div>
+                        <!-- END SIDEBAR USER TITLE -->
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="/">
+                                                <i class="bi bi-grid"></i>Camera</a>
+                                        </li>
+        
+                                        <li class="nav-heading">Administrator</li>
+        
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link" data-bs-target="#tables-nav" href="#" role="button" data-bs-toggle="collapse" aria-expanded="false">
+                                                <i class="bi bi-journal-text"></i>
+                                                Management
+                                                <i class="bi bi-chevron-down ms-auto"></i>
+                                            </a>
+                                            <ul id="tables-nav" class="dropdown-menu collapse " data-bs-parent="#sidebar-nav">
+                                                <li>
+                                                    <a class="dropdown-item " href="/addUser">
+                                                        User</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item " href="/addcctv">
+                                                        CCTV</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </ul>
+                            {% elif user.permission == "User" %}
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                <div class="offcanvas-body">
+                            
+                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 sidebar-nav" id="sidebar-nav">
+                                        <li class="nav-heading">
+                                            <!-- SIDEBAR USERPIC -->
+                                            <div class="profile-userpic">
+                                                <img src="/static/user.jpeg" class="img-responsive" alt="">
+                                            </div>
+                                            <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                <div class="userrole">{{ user.username }}</div>
+                            </div>
+                            <div class="profile-usertitle-job">
+                                <p class="m-0 usersname"><small>{{ user.email }}</small></p>
+                            </div>
+                        </div>
+                        
+                        <!-- END SIDEBAR USER TITLE -->
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="/">
+                                                <i class="bi bi-grid"></i>Cameras</a>
+                                        </li>
+        
+        
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link" data-bs-target="#tables-nav" href="#" role="button" data-bs-toggle="collapse" aria-expanded="false">
+                                                <i class="bi bi-journal-text"></i>
+                                                Management
+                                                <i class="bi bi-chevron-down ms-auto"></i>
+                                            </a>
+                                            <ul id="tables-nav" class="dropdown-menu collapse " data-bs-parent="#sidebar-nav">
+                                                <li>
+                                                    <a class="dropdown-item " href="/cctvAccess">
+                                                        CCTV Access</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </ul>
+                            {% endif %}
+                        </div>
+                        <div class="logout mb-3 align-self-center me-3"> <a class="btn btn-danger" href="/logout">Sign Out</a></div>
+                    </div>
+                </div>
+                <!-- User Roles -->
+            </div>
+        </div>
+        <!-- user data -->
+    </header>
+    <!-- Navbar -->
+    
+    <!-- MAIN CONTENT -->
+    {% block main %} 
+    {% endblock %}
+    <!-- MAIN CONTENT -->
+
+</body>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+</script>
+<!-- SCRIPTS -->
+
+</html>

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block main %}
+
+<!-- {{check_cctv}} -->
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between">
+                        <h5 class="table-title">{{user_cctv.username}} CCTV Permission</h5>
+                    </div>
+                    <!-- DATA TABLE -->
+                    <table class="table card-font">
+                        <thead>
+                            <tr>
+                                <th scope="col">Hostname</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">CCTV link</th>
+                                <th scope="col">Brand</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for CCTV in user_cctv.cctvs %}
+                            <tr>
+                                <td>{{CCTV.hostname}}</td>
+                                <td>{{CCTV.name_cctv}}</td>
+                                <td>{{CCTV.link_cctv}}</td>
+                                <td>{{CCTV.brand_cctv}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- DATA TABLE -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

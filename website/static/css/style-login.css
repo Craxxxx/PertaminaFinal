@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-image: url('background-cctv24.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    background-color: #686d73;
+}
+
+.login{
+    width: 450px;
+    background-color: #1f1f1f;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 130px auto;
+    border-radius: 40px;
+}
+
+.login h1{
+    text-align: ;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 3px solid #5b6574
+    
+}
+
+
+.links
+{
+    margin-top: 20px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    padding: 0 20px 20px 45px;
+}
+
+.login .links a {
+    color: #adb2ba;
+    text-decoration: none;
+    display: inline-flex;
+    padding: 0 10px 10px 10px;
+    font-weight: bold;
+}
+
+.login .links a:hover{
+    color: #9da3ac;
+}
+
+.login .links a.active{
+    border-bottom: 3px solid #5b6574;
+    color: #5b6574;
+}
+
+.formWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+    flex-direction: column;
+    
+}
+
+.FORMFIELD
+{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    
+}
+
+.BOXCHECK
+{
+    width: 30px;
+    height: 30px;
+    /* background-color: #2868c7; */
+    position:absolute;
+    right:57px;
+    top: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    
+}
+
+
+.boxcheck
+{
+    position: inherit;
+    cursor: pointer;
+    width: 27px;
+    height: 27px;
+    margin: 1.4px;
+    -webkit-appearance: none;
+    z-index: 1;
+    
+}
+
+.bi
+{
+    position: absolute;
+    right: 7px;
+    top: 3px;
+    right: 4px;
+    color: #9c9b9b;
+    z-index: 0;
+}
+
+#b:hover + #a
+{
+    transition: 0.7s ease;
+    color: rgb(71, 71, 71);
+    
+}
+
+.login form label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #3700B3;
+    color: #DCDCDF;
+}
+
+.login form input[type="password"], .login form input[type="text"], .login form input[type="email"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+.login form  input[type="submit"]{
+    width: 80%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #3700B3;
+    border: 0;
+
+    cursor: pointer;
+    font-weight: bold;
+    color: #DCDCDF;
+    transition: background-color 0.2s;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    
+    margin-left: 45px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+
+
+}
+
+.login form input[type="submit"]:hover{
+    background-color: #3700B3;
+    transition: background-color 0.2s;
+}
+
+.msg{
+    display: flex;
+    color: red;
+    align-self: center;
+}
+
+.closing{
+    margin-top: 10%;
+    text-align: center;
+    color: white;
+}
+
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

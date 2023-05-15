@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block main %}
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card cardtest">
+                <div class="card-body">
+                    <h5 class="card-title">CCTV MANAGEMENT</h5>
+                    <!-- DATA TABLE -->
+                    <table class="table card-font">
+                        <thead>
+                            <tr>
+                                <th scope="col">Hostname</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">CCTV link</th>
+                                <th scope="col">Brand</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for CCTV in cctv %}    
+                            <tr>
+                                <td>{{CCTV.hostname}}</td>
+                                <td>{{CCTV.name_cctv}}</td>
+                                <td>{{CCTV.link_cctv}}</td>
+                                <td>{{CCTV.brand_cctv}}</td>
+                                <td>
+                                    <a href="/updatecctv/{{CCTV.id}}" class="badge"><span><i class="bi bi-pencil"></i></span></a>
+                                    <a href="/deletecctv/{{CCTV.id}}" class="badge"><span><i class="bi bi-trash2-fill"></i></span></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- DATA TABLE -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add CCTV</h5>
+                    <!-- CCTV FORM -->
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label class="form-label">Hostname</label>
+                            <input name="cctv_name" class="form-control" placeholder="hikvision.ddns.net" {% if cctv_to_update %}  value="{{cctv_to_update.hostname}}" {% endif %}>
+                          </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <input name="description" type="text" class="form-control" placeholder="rtsp://admin:admin123@10.203.21.20:554" {% if cctv_to_update %}  value="{{cctv_to_update.name_cctv}}" {% endif %}>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">CCTV link</label>
+                            <input name="cctv_link" type="text" class="form-control" placeholder="Bosch,Hkvision,.." {% if cctv_to_update %}  value="{{cctv_to_update.link_cctv}}" {% endif %}>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Brand</label>
+                            <input name="cctv_brand" type="text" class="form-control" placeholder="Bosch,Hkvision,.." {% if cctv_to_update %}  value="{{cctv_to_update.brand_cctv }}" {% endif %}>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-primary btn-sm mt-3 submitbutton"> 
+                        <input type="reset" value="Reset" class="btn btn-primary btn-sm mt-3 submitbutton">
+                    </form>
+                    <!-- CCTV FORM -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %} <!-- if messages is not empty --> 
+                        {% for category, message in messages %} <!-- loop through the messages and categories -->
+                        {% if category == 'error' %}	<!-- if category is error-->
+                        <div class="msg">	
+                            {{message}}
+                        </div>
+                        {% else %}
+						<div class="msg">	
+							{{message}}
+						</div>
+                        {% endif %}
+					    {% endfor%}
+                    {% endif %}
+					{% endwith %}		
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

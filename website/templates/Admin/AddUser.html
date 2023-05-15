@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block main %}
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card cardtest">
+                <div class="card-body">
+                    <h5 class="card-title">USER MANAGEMENT</h5>
+                    <!-- DATA TABLE -->
+                    <table class="table card-font">
+                        <thead>
+                            <tr>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Permission</th>
+                                <th scope="col">CCTV</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in Users %}    
+                            <tr>
+                                <td>{{user.username}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.password}}</td>
+                                <td>{{user.permission}}</td>
+                                <td><a class="btn btn-secondary btn-sm" href="/manageCCTV/{{user.id}}">Manage</a></td>
+                                <td>
+                                    <a href="/updateUser/{{user.id}}" class="badge"><span><i class="bi bi-pencil"></i></span></a>
+                                    <a href="/deleteUser/{{user.id}}" class="badge"><span><i class="bi bi-trash2-fill"></i></span></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- DATA TABLE -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add User</h5>
+                    <!-- USER FORM -->
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input name="username" class="form-control" placeholder="Username" {% if name_to_update %} value="{{name_to_update.username}}" {% endif %}>
+                          </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input name="email" type="email" class="form-control" placeholder="account@gmail.com" {% if name_to_update %} value="{{name_to_update.email}}" {% endif %}>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input name="password" type="password" class="form-control" placeholder="Password" {% if name_to_update %} value="{{name_to_update.password}}" {% endif %}>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Permission</label>
+                            <select name="permission" class="form-select" aria-label="Default select example">
+                                {% if name_to_update %}
+                                    {% if name_to_update.permission == "Admin" %}
+                                        <option value="Admin" selected="selected">Admin</option>
+                                        <option value="User">User</option>
+                                    {% elif name_to_update.permission == "User" %}
+                                        <option value="Admin">Admin</option>
+                                        <option value="User" selected="selected">User</option>
+                                    {% else %}
+                                        <option value="Admin">Admin</option>
+                                        <option value="User">User</option>
+                                    {% endif %}
+                                {% else %}
+                                    <option value="Admin">Admin</option>
+                                    <option value="User">User</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-primary btn-sm mt-3 submitbutton">
+                        <input type="reset" value="Reset" class="btn btn-primary btn-sm mt-3 submitbutton">
+                    </form>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %} <!-- if messages is not empty --> 
+                        {% for category, message in messages %} <!-- loop through the messages and categories -->
+                        {% if category == 'error' %}	<!-- if category is error-->
+                        <div class="msg">	
+                            {{message}}
+                        </div>
+                        {% else %}
+						<div class="msg">	
+							{{message}}
+						</div>
+                        {% endif %}
+					    {% endfor%}
+                    {% endif %}
+					{% endwith %}		
+                    <!-- USER FORM -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- pop up method -->  
+
+{% endblock %}

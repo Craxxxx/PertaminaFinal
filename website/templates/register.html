@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Expires" content="0">
+		<meta charset="utf-8">
+		<title>CM Login</title>
+		<link rel="stylesheet" href="/static/css/style-login.css"> <!-- style-login.css  -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">	
+		<link rel="icon" type="image/x-icon" href="/static/cctv.png"> <!-- cctv.png -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	</head>
+	<body>
+		<div class="login">
+			<h1>register</h1>
+			<img src="/static/logo-pertamina.jpg" class="logo"> <!-- logo-pertamina.jpg -->
+			<div class="links">
+				<a href="/">Login</a>
+				<a href="#" class="active">Register</a>
+			</div>
+			<!-- FORM -->
+			<form method="POST">
+			<div class="formWrapper">
+					<div class="FORMFIELD"  >
+						<label for="username">
+							<i class="fas fa-user"></i>
+						</label>
+						<input type="text" name="username" placeholder="Username" id="username" required>
+					</div>
+					<div class="FORMFIELD">
+						<label for="password">
+							<i class="fas fa-lock"></i>
+						</label>
+						<div class="inputField">
+							<input type="password" name="password" placeholder="Password" id="password" required>
+							<div class="BOXCHECK">
+								<input class="boxcheck" id="b" type="checkbox" onclick="myFunction(); ChangeIcon(a);">
+								<i class="bi bi-eye" style="font-size: 20px;" id="a"></i>
+							</div>
+						</div>
+					</div>	
+					
+						<!-- defined variables called messages and use categories -->
+						{% with messages = get_flashed_messages(with_categories=true) %}
+						{% if messages %} <!-- if messages is not empty --> 
+							{% for category, message in messages %} <!-- loop through the messages and categories -->
+							{% if category == 'error' %}	<!-- if category is error-->
+							<div class="msg">	
+								{{message}}
+							</div>
+							{% else %}
+							<div class="msg">	
+								{{message}}
+							</div>
+							{% endif %}
+							{% endfor%}
+						{% endif %}
+						{% endwith %}		
+			</div>		
+					<input type="submit" value="Register">
+					<!-- <a href="/ambatukam">Bypass</a> -->
+			</form>
+			<!-- FORM -->	
+		</div>
+	</body>
+	<script src="/static/js/ALL.js"></script>
+	<footer>
+		<div class="closing">&copy; KP SI UNSRI 2022</div>
+	</footer>
+	
+</html>

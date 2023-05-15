@@ -1,0 +1,361 @@
+{% extends "base.html" %}  
+{% block main %}  
+
+<div class="container-fluid">
+    <div class="row">
+      <!-- cctv column -->
+      <div class="col-9 g-0">
+        <div class="row row-cols-4 g-0">
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed1') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen1();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed2') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam2" onclick="openFullscreen2();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam3" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed4') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam4" onclick="openFullscreen4();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed5') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam5" onclick="openFullscreen5();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+          <div class='col-md-3'><img src="{{ url_for('playvid3.video_feed3') }}" height="172.55" width="284.85" class="w-100"
+              controls id="cam1" onclick="openFullscreen3();"></div>
+        </div>
+        <div class="row lineseparator"><hr class="hr"/></div>
+        <div class="row CameraOption">
+          <!-- Camera Buttons -->
+          <div class="d-flex flex-row justify-content-end mb-1">
+            
+            <div class="ms-0"><button type="button" class="btn btn-sm" onclick="location.href='/2x2'"><img src="/static/4_black.png" alt="" class="img-logo"></button></div>
+            <div class="ms-0"><button type="button" class="btn btn-sm" onclick="location.href='/3x3'"><img src="/static/9_black.png" alt="" class="img-logo"></button></div>
+            <div class="ms-0"><button type="button" class="btn btn-sm" active onclick="location.href='/'"><img src="/static/16_white.png" alt="" class="img-logo"></button></div>
+      </div>
+      <!-- Camera Buttons -->
+        </div>
+      </div>
+      <!-- cctv column -->
+
+      <!-- separator -->
+      <!-- separator -->
+
+      <!-- sidebar column -->
+      <div class="col-3 g-0 sidebar ps-3 pt-3">
+        <nav id="sidebarMenu" class="d-md-block sidebar collapse navbar-light">
+          <div class="position-sticky">
+              <!-- sidebar title -->
+
+                  <!-- <h5 class="title">Cameras</h3> -->
+              <!-- sidebar title -->
+
+              <!-- sidebar items -->
+                <form action="" method="POST">
+                  {% for cctv in jinja1 %}
+                    {% if  loop.index == 1 %} 
+                    <div class="row g-0 mb-2 side">
+                      {% for button in jinja2 %}
+                        <div class="col">
+                          <div class="dropdown">
+                            <select class="dropbtn" name="wincam{{loop.index}}">
+                              <div class="dropdown-content">
+                                <option value = "C:\Users\Raditya\Desktop\UNSRI\Pertamina\PertaminaProjects\PertaminaFinal\website\static\no-signal.mp4" selected hidden>CAM</option>
+                                {% for cctv in user_cctv %}
+                                <option value="{{cctv.link_cctv}}">{{cctv.name_cctv}}</option>
+                                {% endfor %}
+                              </div>
+                              </select>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    {% elif  loop.index == 2 %}
+                    <div class="row g-0 mb-2 side">
+                      {% for button in jinja2 %}
+                        <div class="col">
+                          <div class="dropdown">
+                            <select class="dropbtn" name="wincam{{loop.index + 2}}">
+                              <div class="dropdown-content">
+                                <option value = "C:\Users\Raditya\Desktop\UNSRI\Pertamina\PertaminaProjects\PertaminaFinal\website\static\no-signal.mp4" selected hidden>CAM</option>
+                                {% for cctv in user_cctv %}
+                                <option value="{{cctv.link_cctv}}">{{cctv.name_cctv}}</option>
+                                {% endfor %}
+                              </div>
+                              </select>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    {% elif  loop.index == 3 %}
+                    <div class="row g-0 mb-2 side">
+                      {% for button in jinja2 %}
+                        <div class="col">
+                          <div class="dropdown">
+                            <select class="dropbtn" name="wincam{{loop.index + 4}}">
+                              <div class="dropdown-content">
+                                <option value = "C:\Users\Raditya\Desktop\UNSRI\Pertamina\PertaminaProjects\PertaminaFinal\website\static\no-signal.mp4" selected hidden>CAM</option>
+                                {% for cctv in user_cctv %}
+                                <option value="{{cctv.link_cctv}}">{{cctv.name_cctv}}</option>
+                                {% endfor %}
+                              </div>
+                              </select>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    {% elif  loop.index == 4 %}
+                    <div class="row g-0 mb-2 side">
+                      {% for button in jinja2 %}
+                        <div class="col">
+                          <div class="dropdown">
+                            <select class="dropbtn" name="wincam{{loop.index + 6}}">
+                              <div class="dropdown-content">
+                                <option value = "C:\Users\Raditya\Desktop\UNSRI\Pertamina\PertaminaProjects\PertaminaFinal\website\static\no-signal.mp4" selected hidden>CAM</option>
+                                {% for cctv in user_cctv %}
+                                <option value="{{cctv.link_cctv}}">{{cctv.name_cctv}}</option>
+                                {% endfor %}
+                              </div>
+                              </select>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    {% elif  loop.index == 5 %}
+                    <div class="row g-0 mb-2 side">
+                      {% for button in jinja2 %}
+                        <div class="col">
+                          <div class="dropdown">
+                            <select class="dropbtn" name="wincam{{loop.index + 8}}">
+                              <div class="dropdown-content">
+                                <option value = "C:\Users\Raditya\Desktop\UNSRI\Pertamina\PertaminaProjects\PertaminaFinal\website\static\no-signal.mp4" selected hidden>CAM</option>
+                                {% for cctv in user_cctv %}
+                                <option value="{{cctv.link_cctv}}">{{cctv.name_cctv}}</option>
+                                {% endfor %}
+                              </div>
+                              </select>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    {% elif  loop.index == 6 %}
+                    <div class="row g-0 mb-2 side">
+                      {% for button in jinja2 %}
+                        <div class="col">
+                          <div class="dropdown">
+                            <select class="dropbtn" name="wincam{{loop.index + 10}}">
+                              <div class="dropdown-content">
+                                <option value = "C:\Users\Raditya\Desktop\UNSRI\Pertamina\PertaminaProjects\PertaminaFinal\website\static\no-signal.mp4" selected hidden>CAM</option>
+                                {% for cctv in user_cctv %}
+                                <option value="{{cctv.link_cctv}}">{{cctv.name_cctv}}</option>
+                                {% endfor %}
+                              </div>
+                              </select>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    {% elif  loop.index == 7 %}
+                    <div class="row g-0 mb-2 side">
+                      {% for button in jinja2 %}
+                        <div class="col">
+                          <div class="dropdown">
+                            <select class="dropbtn" name="wincam{{loop.index + 12}}">
+                              <div class="dropdown-content">
+                                <option value = "C:\Users\Raditya\Desktop\UNSRI\Pertamina\PertaminaProjects\PertaminaFinal\website\static\no-signal.mp4" selected hidden>CAM</option>
+                                {% for cctv in user_cctv %}
+                                <option value="{{cctv.link_cctv}}">{{cctv.name_cctv}}</option>
+                                {% endfor %}
+                              </div>
+                              </select>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    {% elif  loop.index == 8 %}
+                    <div class="row g-0 mb-2 side">
+                      {% for button in jinja2 %}
+                        <div class="col">
+                          <div class="dropdown">
+                            <select class="dropbtn" name="wincam{{loop.index + 14}}">
+                              <div class="dropdown-content">
+                                <option value = "C:\Users\Raditya\Desktop\UNSRI\Pertamina\PertaminaProjects\PertaminaFinal\website\static\no-signal.mp4" selected hidden>CAM</option>
+                                {% for cctv in user_cctv %}
+                                <option value="{{cctv.link_cctv}}">{{cctv.name_cctv}}</option>
+                                {% endfor %}
+                              </div>
+                              </select>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+                  {% endfor%}
+                  <input type="submit" value="Refresh" class="btn btn-primary btn-sm mt-3 submitbutton">
+                  <input type="reset" value="Reset" class="btn btn-primary btn-sm mt-3 submitbutton">  
+                </form>
+
+                   
+          </div>
+        </nav>
+      </div>
+      <!-- sidebar column -->
+    </div>
+</div>
+
+<script type="text/javascript">
+  var elem1 = document.getElementById("cam1");
+  function openFullscreen1() {
+    if (elem1.requestFullscreen) {
+      elem1.requestFullscreen();
+    } else if (elem1.msRequestFullscreen) { /* IE11 */
+      elem1.msRequestFullscreen();
+    }
+  }
+  var elem2 = document.getElementById("cam2");
+  function openFullscreen2() {
+    if (elem2.requestFullscreen) {
+      elem2.requestFullscreen();
+    } else if (elem2.msRequestFullscreen) { /* IE11 */
+      elem2.msRequestFullscreen();
+    }
+  }
+  var elem3 = document.getElementById("cam3");
+  function openFullscreen3() {
+    if (elem3.requestFullscreen) {
+      elem3.requestFullscreen();
+    } else if (elem3.msRequestFullscreen) { /* IE11 */
+      elem3.msRequestFullscreen();
+    }
+  }
+  var elem4 = document.getElementById("cam4");
+  function openFullscreen4() {
+    if (elem4.requestFullscreen) {
+      elem4.requestFullscreen();
+    } else if (elem4.msRequestFullscreen) { /* IE11 */
+      elem4.msRequestFullscreen();
+    }
+  }
+  var elem5 = document.getElementById("cam5");
+  function openFullscreen5() {
+    if (elem5.requestFullscreen) {
+      elem5.requestFullscreen();
+    } else if (elem5.msRequestFullscreen) { /* IE11 */
+      elem5.msRequestFullscreen();
+    }
+  }
+  var elem6 = document.getElementById("cam6");
+  function openFullscreen6() {
+    if (elem6.requestFullscreen) {
+      elem6.requestFullscreen();
+    } else if (elem6.msRequestFullscreen) { /* IE11 */
+      elem6.msRequestFullscreen();
+    }
+  }
+  var elem7 = document.getElementById("cam7");
+  function openFullscreen7() {
+    if (elem7.requestFullscreen) {
+      elem7.requestFullscreen();
+    } else if (elem7.msRequestFullscreen) { /* IE11 */
+      elem7.msRequestFullscreen();
+    }
+  }
+  var elem8 = document.getElementById("cam8");
+  function openFullscreen8() {
+    if (elem8.requestFullscreen) {
+      elem8.requestFullscreen();
+    } else if (elem8.msRequestFullscreen) { /* IE11 */
+      elem8.msRequestFullscreen();
+    }
+  }
+  var elem9 = document.getElementById("cam9");
+  function openFullscreen9() {
+    if (elem9.requestFullscreen) {
+      elem9.requestFullscreen();
+    } else if (elem9.msRequestFullscreen) { /* IE11 */
+      elem9.msRequestFullscreen();
+    }
+  }
+  var elem10 = document.getElementById("cam10");
+  function openFullscreen9() {
+    if (elem10.requestFullscreen) {
+      elem10.requestFullscreen();
+    } else if (elem10.msRequestFullscreen) { /* IE11 */
+      elem10.msRequestFullscreen();
+    }
+  }
+  var elem11 = document.getElementById("cam11");
+  function openFullscreen11() {
+    if (elem11.requestFullscreen) {
+      elem11.requestFullscreen();
+    } else if (elem11.msRequestFullscreen) { /* IE11 */
+      elem11.msRequestFullscreen();
+    }
+  }
+  var elem12 = document.getElementById("cam12");
+  function openFullscreen12() {
+    if (elem12.requestFullscreen) {
+      elem12.requestFullscreen();
+    } else if (elem9.msRequestFullscreen) { /* IE11 */
+      elem12.msRequestFullscreen();
+    }
+  }
+  var elem13 = document.getElementById("cam13");
+  function openFullscreen13() {
+    if (elem13.requestFullscreen) {
+      elem13.requestFullscreen();
+    } else if (elem13.msRequestFullscreen) { /* IE11 */
+      elem13.msRequestFullscreen();
+    }
+  }
+  var elem14 = document.getElementById("cam14");
+  function openFullscreen9() {
+    if (elem14.requestFullscreen) {
+      elem9.requestFullscreen();
+    } else if (elem9.msRequestFullscreen) { /* IE11 */
+      elem14.msRequestFullscreen();
+    }
+  }
+  var elem15 = document.getElementById("cam15");
+  function openFullscreen9() {
+    if (elem15.requestFullscreen) {
+      elem15.requestFullscreen();
+    } else if (elem9.msRequestFullscreen) { /* IE11 */
+      elem15.msRequestFullscreen();
+    }
+  }
+  var elem16 = document.getElementById("cam16");
+  function openFullscreen9() {
+    if (elem16.requestFullscreen) {
+      elem16.requestFullscreen();
+    } else if (elem9.msRequestFullscreen) { /* IE11 */
+      elem16.msRequestFullscreen();
+    }
+  }
+  var elem17 = document.getElementById("ALLCAM");
+  function openFullLayout() {
+    if (elem17.requestFullscreen) {
+      elem17.requestFullscreen();
+    } else if (elem10.msRequestFullscreen) { /* IE11 */
+      elem17.msRequestFullscreen();
+    }
+  }
+</script>
+
+{% endblock %}
+
